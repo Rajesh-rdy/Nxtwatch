@@ -1,12 +1,11 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
-import {Link} from 'react-router-dom'
 
 const SavedVideosContainer = styled.div`
   min-height: 100vh;
-  background-color: ${props =>
-    props.isDarkTheme ? '#0f0f0f' : '#f9f9f9'};
+  background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
 `
 
 const MainContent = styled.div`
@@ -22,8 +21,7 @@ const ContentContainer = styled.main`
 const PageTitle = styled.h1`
   font-size: 28px;
   margin: 0 0 25px;
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#181818'};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
 `
 
 const VideosContainer = styled.ul`
@@ -53,8 +51,7 @@ const VideoTitle = styled.p`
   margin: 10px 0;
   font-size: 16px;
   font-weight: 500;
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#181818'};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
 `
 
 const ChannelContainer = styled.div`
@@ -73,15 +70,13 @@ const ChannelLogo = styled.img`
 const ChannelName = styled.p`
   margin: 0;
   font-size: 14px;
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#181818'};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
 `
 
 const VideoMeta = styled.p`
   margin: 6px 0;
   font-size: 14px;
-  color: ${props =>
-    props.isDarkTheme ? '#94a3b8' : '#64748b'};
+  color: ${props => (props.isDarkTheme ? '#94a3b8' : '#64748b')};
 `
 
 const EmptyContainer = styled.div`
@@ -100,20 +95,14 @@ const EmptyImage = styled.img`
 
 const EmptyHeading = styled.h1`
   font-size: 24px;
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#181818'};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
 `
 
 const EmptyText = styled.p`
-  color: ${props =>
-    props.isDarkTheme ? '#94a3b8' : '#64748b'};
+  color: ${props => (props.isDarkTheme ? '#94a3b8' : '#64748b')};
 `
 
-const SavedVideos = ({
-  isDarkTheme,
-  toggleTheme,
-  savedVideosList,
-}) => {
+const SavedVideos = ({isDarkTheme, toggleTheme, savedVideosList}) => {
   const renderEmptyView = () => (
     <EmptyContainer>
       <EmptyImage
@@ -136,14 +125,9 @@ const SavedVideos = ({
       {savedVideosList.map(video => (
         <VideoListItem key={video.id}>
           <VideoLink to={`/videos/${video.id}`}>
-            <Thumbnail
-              src={video.thumbnail_url}
-              alt="video thumbnail"
-            />
+            <Thumbnail src={video.thumbnail_url} alt="video thumbnail" />
 
-            <VideoTitle isDarkTheme={isDarkTheme}>
-              {video.title}
-            </VideoTitle>
+            <VideoTitle isDarkTheme={isDarkTheme}>{video.title}</VideoTitle>
 
             {video.channel && (
               <ChannelContainer>
@@ -158,9 +142,7 @@ const SavedVideos = ({
               </ChannelContainer>
             )}
 
-            <VideoMeta isDarkTheme={isDarkTheme}>
-              {video.view_count}
-            </VideoMeta>
+            <VideoMeta isDarkTheme={isDarkTheme}>{video.view_count}</VideoMeta>
 
             <VideoMeta isDarkTheme={isDarkTheme}>
               {video.published_at}
@@ -173,18 +155,13 @@ const SavedVideos = ({
 
   return (
     <SavedVideosContainer isDarkTheme={isDarkTheme}>
-      <Header
-        isDarkTheme={isDarkTheme}
-        toggleTheme={toggleTheme}
-      />
+      <Header isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
 
       <MainContent>
         <Sidebar isDarkTheme={isDarkTheme} />
 
         <ContentContainer>
-          <PageTitle isDarkTheme={isDarkTheme}>
-            Saved Videos
-          </PageTitle>
+          <PageTitle isDarkTheme={isDarkTheme}>Saved Videos</PageTitle>
 
           {savedVideosList.length === 0
             ? renderEmptyView()

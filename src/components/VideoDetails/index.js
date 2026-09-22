@@ -10,8 +10,7 @@ import Sidebar from '../Sidebar'
 
 const VideoDetailsContainer = styled.div`
   min-height: 100vh;
-  background-color: ${props =>
-    props.isDarkTheme ? '#0f0f0f' : '#ffffff'};
+  background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#ffffff')};
 `
 
 const MainContent = styled.div`
@@ -32,8 +31,7 @@ const PlayerContainer = styled.div`
 const VideoTitle = styled.p`
   font-size: 24px;
   margin: 20px 0 10px;
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#181818'};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
 `
 
 const VideoMetaContainer = styled.div`
@@ -44,8 +42,7 @@ const VideoMetaContainer = styled.div`
 `
 
 const ViewsDate = styled.p`
-  color: ${props =>
-    props.isDarkTheme ? '#94a3b8' : '#64748b'};
+  color: ${props => (props.isDarkTheme ? '#94a3b8' : '#64748b')};
 `
 
 const ActionsContainer = styled.div`
@@ -94,23 +91,20 @@ const ChannelName = styled.p`
   font-size: 18px;
   font-weight: 600;
   margin: 0;
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#181818'};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
 `
 
 const SubscriberCount = styled.p`
   margin: 5px 0 0;
   font-size: 14px;
-  color: ${props =>
-    props.isDarkTheme ? '#94a3b8' : '#64748b'};
+  color: ${props => (props.isDarkTheme ? '#94a3b8' : '#64748b')};
 `
 
 const Description = styled.p`
   margin-top: 25px;
   line-height: 1.6;
   font-size: 15px;
-  color: ${props =>
-    props.isDarkTheme ? '#e2e8f0' : '#475569'};
+  color: ${props => (props.isDarkTheme ? '#e2e8f0' : '#475569')};
 `
 
 const StatusContainer = styled.div`
@@ -143,7 +137,7 @@ const VideoDetails = ({
   savedVideosList,
   setSavedVideosList,
 }) => {
-  const id = match.params.id
+  const {id} = match.params
 
   const [videoDetails, setVideoDetails] = useState(null)
   const [apiStatus, setApiStatus] = useState('INITIAL')
@@ -161,19 +155,16 @@ const VideoDetails = ({
     try {
       const jwtToken = Cookies.get('jwt_token')
 
-      const response = await fetch(
-        `https://apis.ccbp.in/videos/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${jwtToken}`,
-          },
+      const response = await fetch(`https://apis.ccbp.in/videos/${id}`, {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
         },
-      )
+      })
 
       const data = await response.json()
 
       if (response.ok) {
-        const video = data.video_details
+        const {video_details: video} = data
 
         setVideoDetails(video)
 
@@ -236,10 +227,7 @@ const VideoDetails = ({
       setIsSaved(false)
     } else {
       // Add video
-      const updatedVideos = [
-        ...savedVideosList,
-        videoDetails,
-      ]
+      const updatedVideos = [...savedVideosList, videoDetails]
 
       setSavedVideosList(updatedVideos)
       setIsSaved(true)
@@ -248,12 +236,7 @@ const VideoDetails = ({
 
   const renderLoadingView = () => (
     <StatusContainer data-testid="loader">
-      <Loader
-        type="ThreeDots"
-        color="#4f46e5"
-        height={50}
-        width={50}
-      />
+      <Loader type="ThreeDots" color="#4f46e5" height={50} width={50} />
     </StatusContainer>
   )
 
@@ -264,22 +247,15 @@ const VideoDetails = ({
 
     return (
       <StatusContainer>
-        <FailureImage
-          src={failureImageUrl}
-          alt="failure view"
-        />
+        <FailureImage src={failureImageUrl} alt="failure view" />
 
         <h1>Oops! Something Went Wrong</h1>
 
         <p>
-          We are having some trouble completing your request.
-          Please try again.
+          We are having some trouble completing your request. Please try again.
         </p>
 
-        <RetryButton
-          type="button"
-          onClick={getVideoDetails}
-        >
+        <RetryButton type="button" onClick={getVideoDetails}>
           Retry
         </RetryButton>
       </StatusContainer>
@@ -289,16 +265,10 @@ const VideoDetails = ({
   const renderSuccessView = () => (
     <>
       <PlayerContainer>
-        <ReactPlayer
-          url={videoDetails.video_url}
-          width="100%"
-          controls
-        />
+        <ReactPlayer url={videoDetails.video_url} width="100%" controls />
       </PlayerContainer>
 
-      <VideoTitle isDarkTheme={isDarkTheme}>
-        {videoDetails.title}
-      </VideoTitle>
+      <VideoTitle isDarkTheme={isDarkTheme}>{videoDetails.title}</VideoTitle>
 
       <VideoMetaContainer>
         <ViewsDate isDarkTheme={isDarkTheme}>
@@ -379,17 +349,12 @@ const VideoDetails = ({
 
   return (
     <VideoDetailsContainer isDarkTheme={isDarkTheme}>
-      <Header
-        isDarkTheme={isDarkTheme}
-        toggleTheme={toggleTheme}
-      />
+      <Header isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
 
       <MainContent>
         <Sidebar isDarkTheme={isDarkTheme} />
 
-        <ContentContainer>
-          {renderContent()}
-        </ContentContainer>
+        <ContentContainer>{renderContent()}</ContentContainer>
       </MainContent>
     </VideoDetailsContainer>
   )
