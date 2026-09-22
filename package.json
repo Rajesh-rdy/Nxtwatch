@@ -6,7 +6,7 @@
   "node": "24.x",
   "npm": ">=6"
 },
-"packageManager": "pnpm@10.15.0",
+
   "dependencies": {
     "@craco/craco": "6.1.1",
     "@testing-library/jest-dom": "5.11.9",
