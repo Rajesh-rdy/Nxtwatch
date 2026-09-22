@@ -41,7 +41,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider craco build",
     "test": "craco test",
     "lint": "eslint .",
     "lint:fix": "eslint --fix src/",
