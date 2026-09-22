@@ -9,8 +9,7 @@ const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 15px 25px;
-  background-color: ${props =>
-    props.isDarkTheme ? '#212121' : '#ffffff'};
+  background-color: ${props => (props.isDarkTheme ? '#212121' : '#ffffff')};
 `
 
 const RightSection = styled.div`
@@ -27,8 +26,7 @@ const ProfileImage = styled.img`
 const ThemeButton = styled.button`
   background-color: transparent;
   border: none;
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#000000'};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#000000')};
   font-size: 24px;
   cursor: pointer;
 `
@@ -44,8 +42,7 @@ const LogoutButton = styled.button`
 `
 
 const LogoutPopup = styled.div`
-  background-color: ${props =>
-    props.isDarkTheme ? '#212121' : '#ffffff'};
+  background-color: ${props => (props.isDarkTheme ? '#212121' : '#ffffff')};
   padding: 30px;
   border-radius: 8px;
   text-align: center;
@@ -53,8 +50,7 @@ const LogoutPopup = styled.div`
 `
 
 const PopupText = styled.p`
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#181818'};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
   font-size: 16px;
   margin-bottom: 25px;
 `
@@ -121,11 +117,7 @@ const Header = ({isDarkTheme, toggleTheme}) => {
 
         <Popup
           modal
-          trigger={
-            <LogoutButton type="button">
-              Logout
-            </LogoutButton>
-          }
+          trigger={<LogoutButton type="button">Logout</LogoutButton>}
         >
           {close => (
             <LogoutPopup isDarkTheme={isDarkTheme}>
@@ -134,17 +126,11 @@ const Header = ({isDarkTheme, toggleTheme}) => {
               </PopupText>
 
               <PopupButtons>
-                <CancelButton
-                  type="button"
-                  onClick={close}
-                >
+                <CancelButton type="button" onClick={close}>
                   Cancel
                 </CancelButton>
 
-                <ConfirmButton
-                  type="button"
-                  onClick={handleLogout}
-                >
+                <ConfirmButton type="button" onClick={handleLogout}>
                   Confirm
                 </ConfirmButton>
               </PopupButtons>

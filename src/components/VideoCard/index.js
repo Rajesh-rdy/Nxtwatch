@@ -13,8 +13,7 @@ const Thumbnail = styled.img`
 const Title = styled.p`
   font-size: 16px;
   margin: 10px 0;
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#000000'};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#000000')};
 `
 
 const Details = styled.div`
@@ -36,41 +35,30 @@ const VideoInfo = styled.div`
 const ChannelName = styled.p`
   margin: 0;
   font-size: 14px;
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#000000'};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#000000')};
 `
 
 const VideoMeta = styled.p`
   margin: 6px 0 0;
   font-size: 14px;
-  color: ${props =>
-    props.isDarkTheme ? '#94a3b8' : '#64748b'};
+  color: ${props => (props.isDarkTheme ? '#94a3b8' : '#64748b')};
 `
 
 const GamingMeta = styled.p`
   margin: 6px 0;
   font-size: 14px;
-  color: ${props =>
-    props.isDarkTheme ? '#94a3b8' : '#64748b'};
+  color: ${props => (props.isDarkTheme ? '#94a3b8' : '#64748b')};
 `
 
 const VideoCard = ({video, isDarkTheme}) => {
   const hasChannel = video.channel !== undefined
 
   return (
-    <Link
-      to={`/videos/${video.id}`}
-      style={{textDecoration: 'none'}}
-    >
+    <Link to={`/videos/${video.id}`} style={{textDecoration: 'none'}}>
       <Card>
-        <Thumbnail
-          src={video.thumbnail_url}
-          alt="video thumbnail"
-        />
+        <Thumbnail src={video.thumbnail_url} alt="video thumbnail" />
 
-        <Title isDarkTheme={isDarkTheme}>
-          {video.title}
-        </Title>
+        <Title isDarkTheme={isDarkTheme}>{video.title}</Title>
 
         {hasChannel ? (
           <Details>
@@ -94,9 +82,7 @@ const VideoCard = ({video, isDarkTheme}) => {
             </VideoInfo>
           </Details>
         ) : (
-          <GamingMeta isDarkTheme={isDarkTheme}>
-            {video.view_count}
-          </GamingMeta>
+          <GamingMeta isDarkTheme={isDarkTheme}>{video.view_count}</GamingMeta>
         )}
       </Card>
     </Link>

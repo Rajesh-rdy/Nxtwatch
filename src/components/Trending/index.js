@@ -8,10 +8,8 @@ import VideoCard from '../VideoCard'
 
 const TrendingContainer = styled.div`
   min-height: 100vh;
-  background-color: ${props =>
-    props.isDarkTheme ? '#0f0f0f' : '#ffffff'};
-  color: ${props =>
-    props.isDarkTheme ? '#ffffff' : '#000000'};
+  background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#ffffff')};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#000000')};
 `
 
 const MainContent = styled.div`
@@ -107,14 +105,11 @@ const Trending = ({isDarkTheme, toggleTheme}) => {
     try {
       const jwtToken = Cookies.get('jwt_token')
 
-      const response = await fetch(
-        'https://apis.ccbp.in/videos/trending',
-        {
-          headers: {
-            Authorization: `Bearer ${jwtToken}`,
-          },
+      const response = await fetch('https://apis.ccbp.in/videos/trending', {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
         },
-      )
+      })
 
       const data = await response.json()
 
@@ -135,12 +130,7 @@ const Trending = ({isDarkTheme, toggleTheme}) => {
 
   const renderLoadingView = () => (
     <LoaderContainer data-testid="loader">
-      <Loader
-        type="ThreeDots"
-        color="#2563eb"
-        height={50}
-        width={50}
-      />
+      <Loader type="ThreeDots" color="#2563eb" height={50} width={50} />
     </LoaderContainer>
   )
 
@@ -151,19 +141,13 @@ const Trending = ({isDarkTheme, toggleTheme}) => {
         alt="failure view"
       />
 
-      <FailureTitle>
-        Oops! Something Went Wrong
-      </FailureTitle>
+      <FailureTitle>Oops! Something Went Wrong</FailureTitle>
 
       <FailureText>
-        We are having some trouble to complete your request.
-        Please try again.
+        We are having some trouble to complete your request. Please try again.
       </FailureText>
 
-      <RetryButton
-        type="button"
-        onClick={getTrendingVideos}
-      >
+      <RetryButton type="button" onClick={getTrendingVideos}>
         Retry
       </RetryButton>
     </FailureContainer>
@@ -173,10 +157,7 @@ const Trending = ({isDarkTheme, toggleTheme}) => {
     <>
       {videos.map(video => (
         <VideoListItem key={video.id}>
-          <VideoCard
-            video={video}
-            isDarkTheme={isDarkTheme}
-          />
+          <VideoCard video={video} isDarkTheme={isDarkTheme} />
         </VideoListItem>
       ))}
     </>
@@ -200,22 +181,15 @@ const Trending = ({isDarkTheme, toggleTheme}) => {
 
   return (
     <TrendingContainer isDarkTheme={isDarkTheme}>
-      <Header
-        isDarkTheme={isDarkTheme}
-        toggleTheme={toggleTheme}
-      />
+      <Header isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
 
       <MainContent>
         <Sidebar isDarkTheme={isDarkTheme} />
 
         <ContentContainer>
-          <PageHeading>
-            Trending
-          </PageHeading>
+          <PageHeading>Trending</PageHeading>
 
-          <VideosContainer>
-            {renderTrendingView()}
-          </VideosContainer>
+          <VideosContainer>{renderTrendingView()}</VideosContainer>
         </ContentContainer>
       </MainContent>
     </TrendingContainer>

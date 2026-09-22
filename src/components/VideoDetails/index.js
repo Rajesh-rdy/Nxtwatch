@@ -185,8 +185,8 @@ const VideoDetails = ({
 
   useEffect(() => {
     getVideoDetails()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
-
   // Keep Save button synchronized with App state
   useEffect(() => {
     if (videoDetails !== null) {

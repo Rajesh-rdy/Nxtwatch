@@ -27,8 +27,7 @@ const SidebarLink = styled(NavLink)`
   color: ${props => (props.isDarkTheme ? '#ffffff' : '#000000')};
 
   &.active {
-    background-color: ${props =>
-      props.isDarkTheme ? '#383838' : '#ebebeb'};
+    background-color: ${props => (props.isDarkTheme ? '#383838' : '#ebebeb')};
   }
 `
 
@@ -65,41 +64,28 @@ const Sidebar = ({isDarkTheme}) => (
   <SidebarContainer isDarkTheme={isDarkTheme}>
     <NavItemsList>
       <li>
-        <SidebarLink
-          exact
-          to="/"
-          isDarkTheme={isDarkTheme}
-        >
+        <SidebarLink exact to="/" isDarkTheme={isDarkTheme}>
           <AiFillHome size={22} />
           <NavText>Home</NavText>
         </SidebarLink>
       </li>
 
       <li>
-        <SidebarLink
-          to="/trending"
-          isDarkTheme={isDarkTheme}
-        >
+        <SidebarLink to="/trending" isDarkTheme={isDarkTheme}>
           <AiFillFire size={22} />
           <NavText>Trending</NavText>
         </SidebarLink>
       </li>
 
       <li>
-        <SidebarLink
-          to="/gaming"
-          isDarkTheme={isDarkTheme}
-        >
+        <SidebarLink to="/gaming" isDarkTheme={isDarkTheme}>
           <SiYoutubegaming size={22} />
           <NavText>Gaming</NavText>
         </SidebarLink>
       </li>
 
       <li>
-        <SidebarLink
-          to="/saved-videos"
-          isDarkTheme={isDarkTheme}
-        >
+        <SidebarLink to="/saved-videos" isDarkTheme={isDarkTheme}>
           <BiListPlus size={22} />
           <NavText>Saved Videos</NavText>
         </SidebarLink>

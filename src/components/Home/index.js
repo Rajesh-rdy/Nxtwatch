@@ -160,6 +160,7 @@ const Home = ({isDarkTheme, toggleTheme}) => {
 
   useEffect(() => {
     getVideos()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const onChangeSearchInput = event => {
@@ -186,7 +187,9 @@ const Home = ({isDarkTheme, toggleTheme}) => {
         <FailureImage src={failureImageUrl} alt="failure view" />
 
         <h1>Oops! Something Went Wrong</h1>
-        <p>We are having some trouble completing your request. Please try again.</p>
+        <p>
+          We are having some trouble completing your request. Please try again.
+        </p>
 
         <RetryButton type="button" onClick={getVideos}>
           Retry

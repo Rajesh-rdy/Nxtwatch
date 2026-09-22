@@ -58,14 +58,11 @@ const Gaming = ({isDarkTheme, toggleTheme}) => {
     try {
       const jwtToken = Cookies.get('jwt_token')
 
-      const response = await fetch(
-        'https://apis.ccbp.in/videos/gaming',
-        {
-          headers: {
-            Authorization: `Bearer ${jwtToken}`,
-          },
+      const response = await fetch('https://apis.ccbp.in/videos/gaming', {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
         },
-      )
+      })
 
       const data = await response.json()
 
@@ -86,12 +83,7 @@ const Gaming = ({isDarkTheme, toggleTheme}) => {
 
   const renderLoadingView = () => (
     <StatusContainer data-testid="loader">
-      <Loader
-        type="ThreeDots"
-        color="#4f46e5"
-        height={50}
-        width={50}
-      />
+      <Loader type="ThreeDots" color="#4f46e5" height={50} width={50} />
     </StatusContainer>
   )
 
@@ -104,9 +96,7 @@ const Gaming = ({isDarkTheme, toggleTheme}) => {
 
       <h1>Oops! Something Went Wrong</h1>
 
-      <p>
-        We are having trouble completing your request. Please try again.
-      </p>
+      <p>We are having trouble completing your request. Please try again.</p>
 
       <RetryButton type="button" onClick={getGamingVideos}>
         Retry
@@ -117,11 +107,7 @@ const Gaming = ({isDarkTheme, toggleTheme}) => {
   const renderSuccessView = () => (
     <VideosContainer>
       {videos.map(video => (
-        <VideoCard
-          key={video.id}
-          video={video}
-          isDarkTheme={isDarkTheme}
-        />
+        <VideoCard key={video.id} video={video} isDarkTheme={isDarkTheme} />
       ))}
     </VideosContainer>
   )
@@ -144,10 +130,7 @@ const Gaming = ({isDarkTheme, toggleTheme}) => {
 
   return (
     <GamingContainer>
-      <Header
-        isDarkTheme={isDarkTheme}
-        toggleTheme={toggleTheme}
-      />
+      <Header isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
 
       <MainContent>
         <Sidebar isDarkTheme={isDarkTheme} />
